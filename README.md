@@ -2,10 +2,18 @@
 
 Run a shell command in Steel Scheme, capturing `stdout`/`stderr`, with timeout.
 
+## Install
+
+Install with [forge](https://github.com/mattwparas/steel), Steel’s package manager:
+
+```sh
+forge pkg install --git https://github.com/waddie/run-command.scm
+```
+
 ## Usage
 
 ```scheme
-(require "run-command.scm")
+(require "run-command/run-command.scm")
 
 (run-command "echo hello" 5000)
 ;; => (Ok (cons "hello\n" ""))
