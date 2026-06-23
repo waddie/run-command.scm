@@ -36,6 +36,16 @@
 ;; Exit code the watchdog uses to signal a timeout.
 (define timeout-exit-code 124)
 
+;;@doc
+;; Run CMD-STR via `/bin/sh -c` with a TIMEOUT-MS millisecond timeout.
+;;
+;; Returns a Result:
+;;   (Ok (cons stdout stderr))               on completion, both strings
+;;   (Err "Command timed out after <n>ms")   on timeout
+;;   (Err <spawn error>)                     if the shell fails to start
+;;
+;; stdout and stderr are drained concurrently on separate threads, so output
+;; larger than the pipe buffer will not deadlock.
 (define (run-command cmd-str timeout-ms)
   "Run CMD-STR via /bin/sh with a TIMEOUT-MS millisecond timeout.
    Returns (Result (cons stdout stderr)); Err on spawn failure or timeout.
