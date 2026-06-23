@@ -40,8 +40,11 @@
 ;; Run CMD-STR via `/bin/sh -c` with a TIMEOUT-MS millisecond timeout.
 ;;
 ;; Returns a Result:
+;;
 ;;   (Ok (cons stdout stderr))               on completion, both strings
+;;
 ;;   (Err "Command timed out after <n>ms")   on timeout
+;;
 ;;   (Err <spawn error>)                     if the shell fails to start
 ;;
 ;; stdout and stderr are drained concurrently on separate threads, so output
