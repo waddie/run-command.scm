@@ -31,6 +31,13 @@ Two entry points, both returning the same result hash:
 - `(run-argv program args [opts])` runs `program` directly with `args` (a list
   of strings), with no shell, so arguments are never word-split or globbed.
 
+Running tests requires [steel-test](https://github.com/waddie/steel-test)
+installed.
+
+```sh
+steel test/run-command-test.scm
+```
+
 ### Options
 
 `opts` is an optional hash. All keys are optional:
